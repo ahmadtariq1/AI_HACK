@@ -2,7 +2,7 @@
 Application configuration — reads from environment variables / .env file.
 """
 
-from typing import List
+from typing import List, Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -16,9 +16,9 @@ class Settings(BaseSettings):
     # -----------------------------------------------------------------------
     # App metadata
     # -----------------------------------------------------------------------
-    PROJECT_NAME: str = "AI Hack API"
+    PROJECT_NAME: str = "AI Hack"
     VERSION: str = "0.1.0"
-    DESCRIPTION: str = "FastAPI backend for the AI Hack React frontend"
+    DESCRIPTION: str = "FastAPI backend"
     ENVIRONMENT: str = "development"  # development | staging | production
 
     # -----------------------------------------------------------------------
@@ -49,9 +49,18 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
 
     # -----------------------------------------------------------------------
-    # External services (placeholders — add your own)
+    # LLM Configuration
+    # Select provider: "google" (Google AI Studio) | "ollama" (local Ollama)
     # -----------------------------------------------------------------------
-    # OPENAI_API_KEY: str = ""
+    LLM_PROVIDER: str = "google"          # default: Google AI Studio
+
+    # Google AI Studio
+    GEMINI_API_KEY: Optional[str] = None
+    GEMINI_MODEL: str = "gemini-3.1-flash-lite-preview" # fast + cheap JSON-mode capable
+
+    # Ollama (local)
+    OLLAMA_BASE_URL: str = "http://localhost:11434"
+    OLLAMA_MODEL: str = "llama3.2"
 
 
 settings = Settings()
