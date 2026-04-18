@@ -1,0 +1,47 @@
+{
+  "student_profile": {
+    "academic": {
+      "degree_program": "BS Computer Science",
+      "university": "FAST NUCES LAHORE",
+      "semester": 8,
+      "cgpa": 3.87
+    },
+    "technical": {
+      "skills_and_interests": [
+        "Data Engineering Fundamentals",
+        "Core Machine Learning",
+        "Agentic Workflows",
+        "Go",
+        "Python",
+        "React",
+        "Microservices Architecture"
+      ]
+    },
+    "experience": [
+      {
+        "role": "Software Engineering Intern",
+        "context": "Multi-agent systems and agentic workflows"
+      },
+      {
+        "role": "Project Creator",
+        "context": "AI-powered RAG platform with microservices architecture"
+      },
+      {
+        "role": "Competitive Programmer",
+        "context": "Global Top 800 ranking"
+      }
+    ],
+    "logistics": {
+      "preferred_opportunity_types": [
+        "Software Engineering Role",
+        "Open Source Contribution",
+        "Hackathon"
+      ],
+      "location_preference": [
+        "Lahore",
+        "Remote"
+      ],
+      "financial_need": "stipend_required"
+    }
+  }
+}
