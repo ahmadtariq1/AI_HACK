@@ -1,0 +1,4 @@
+Email 10: Academic Update
+
+Subject: Cloud Computing Elective - Room Change
+Body: Dear Class, please note that tomorrow's lecture for the Cloud Computing elective has been moved from Room 12 to Room 14 due to a projector malfunction. The class timing remains the same. Make sure to review the slides on AWS deployment architectures before the lecture, as the instructors will be conducting a pop quiz.

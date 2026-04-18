@@ -1,0 +1,4 @@
+Email 14: Course Assignment Rubric
+
+Subject: CS401 Information Security - Assignment 3 Details
+Body: Dear students, the rubric for Assignment 3 (Cryptography implementation) has been uploaded to the student portal. Remember that your code must execute correctly on the test server. Plagiarism will result in an immediate zero. Office hours for the instructors have been extended to Thursday evening if you need help with the block cipher logic.

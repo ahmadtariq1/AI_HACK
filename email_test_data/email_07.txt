@@ -1,0 +1,4 @@
+Email 7: Research Role
+
+Subject: Call for Research Assistants: Multi-Agent LLM Systems
+Body: The AI research lab is looking for two undergraduate Research Assistants for a 6-month funded project focusing on multi-agent systems and RAG architectures. Minimum SGPA required is 3.5. Candidates with prior experience in agentic workflows will be preferred. Applications close on April 12. Submit your transcript and a one-page statement of interest.

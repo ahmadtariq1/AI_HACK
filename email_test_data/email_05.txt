@@ -1,0 +1,4 @@
+Email 5: Interview Invitation
+
+Subject: Interview Confirmation: Software Engineer (Data) - i2c
+Body: Dear Candidate, we would like to confirm your technical interview for the Software Engineer role at i2c on Tuesday at 2:00 PM. The interview will focus heavily on data engineering fundamentals, SQL, and Python scripting. Please ensure you have a stable internet connection for the video call. Click the link below to test your audio/video settings beforehand.

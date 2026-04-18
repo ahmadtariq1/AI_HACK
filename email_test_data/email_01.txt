@@ -1,0 +1,4 @@
+Email 1: Open Source Program
+
+Subject: Google Summer of Code 2026 - Application Window Now Open!
+Body: Hello students, the proposal submission period for GSoC 2026 is officially open starting today, March 16. If you are interested in contributing to open-source organizations, you have until April 5 to submit your proposals. This is a great opportunity to work on core machine learning libraries or data infrastructure tools. Apply at https://www.google.com/search?q=summerofcode.withgoogle.com.

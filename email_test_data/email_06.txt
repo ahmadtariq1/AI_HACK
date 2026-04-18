@@ -1,0 +1,4 @@
+Email 6: Job Opening
+
+Subject: Opening: Backend Dev (Go/Python) at FinTech Lahore
+Body: We are a fast-growing FinTech startup based in Johar Town looking for a final-year CS student to join us as a part-time backend developer. You will be building microservices using Go and Python, handling real-time financial data. If you prefer low-level systems over simple wrappers, this is for you. Send your resume and GitHub link to careers@fintechlahore.pk by the 25th.
