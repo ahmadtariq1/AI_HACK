@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env.local          # keep .env but ignore local overrides
+*.env.local
+
+# SQLite dev database
+*.db
+*.sqlite3
+
+# Alembic versions cache
+alembic/versions/__pycache__/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test artefacts
+.pytest_cache/
+.mypy_cache/
+htmlcov/
+.coverage
