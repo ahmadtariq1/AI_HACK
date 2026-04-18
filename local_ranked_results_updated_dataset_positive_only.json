@@ -1,0 +1,54 @@
+[
+  {
+    "file": "dataset/updated_dataset/email_06.txt",
+    "score": 78.0,
+    "received_date": "2026-04-18",
+    "deadline": null,
+    "days_remaining": null,
+    "urgency_U": 0.5,
+    "eligibility_E": 1.0,
+    "profile_fit_F": 0.9,
+    "rationale": "The student has relevant experience in agentic workflows and microservices architecture, aligning well with the hackathon's focus. The opportunity allows no blockchain experience, which is not a constraint given the student's background.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T10:11:56.279009Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_05.txt",
+    "score": 71.0,
+    "received_date": "2026-04-18",
+    "deadline": null,
+    "days_remaining": null,
+    "urgency_U": 0.5,
+    "eligibility_E": 1.0,
+    "profile_fit_F": 0.8,
+    "rationale": "The student has relevant experience in agentic workflows and microservices architecture, aligning with the opportunity's focus areas. However, the fellowship has no explicit eligibility constraints, and the application window is closed, which limits practical access despite strong profile fit.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T10:11:56.279009Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_07.txt",
+    "score": 70.0,
+    "received_date": "2026-04-18",
+    "deadline": "2026-04-20",
+    "days_remaining": 2,
+    "urgency_U": 0.9333333333333333,
+    "eligibility_E": 1.0,
+    "profile_fit_F": 0.6,
+    "rationale": "The student is an undergraduate engineering student with a relevant degree and experience in agentic workflows and microservices, which aligns with the research grant's focus. However, the opportunity type is a research grant, not a software engineering role or hackathon, which are preferred by the student.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T10:11:56.279009Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_02.txt",
+    "score": 36.0,
+    "received_date": "2026-04-18",
+    "deadline": null,
+    "days_remaining": null,
+    "urgency_U": 0.5,
+    "eligibility_E": 1.0,
+    "profile_fit_F": 0.3,
+    "rationale": "The opportunity is a networking event with no explicit eligibility constraints, so the student meets all requirements. However, it does not align well with the student's preferred opportunity types (Software Engineering Role, Open Source Contribution, Hackathon), resulting in low profile fit.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T10:11:56.279009Z"
+  }
+]
