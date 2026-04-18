@@ -1,0 +1,4 @@
+Email 8: Fellowship Application
+
+Subject: Apply Now: 2026 Global Data Science Fellowship
+Body: Applications are now open for the Global Data Science Fellowship. We provide a $5,000 stipend and mentorship for students in their final year of university who demonstrate exceptional skill in machine learning and data engineering. Ensure your application, including two letters of recommendation, is submitted by May 10th.

@@ -1,0 +1,4 @@
+Email 4: Local Hackathon Logistics
+
+Subject: SOFTEC 2026: AI Hackathon Team Check-in
+Body: Congratulations on registering for the SOFTEC 2026 AI Hackathon! As you prepare to build your opportunity ranking engine, please ensure your team details are finalized in our portal by tomorrow 5 PM. A reminder that the MVP must be completed within the 6-hour window on event day. We look forward to seeing your agentic workflows in action at FAST-NU!
