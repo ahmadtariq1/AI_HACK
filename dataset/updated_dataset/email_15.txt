@@ -1,4 +1,5 @@
 Email 15: The "Idea" Pitch (Exploitation)
+Received-Date: 2026-04-18
 
 Subject: Looking for a tech wizard for the next Uber!
 Body: I am a business major with an incredible idea that will disrupt the logistics industry. I just need a coder to build the app, set up the backend, and handle the AI integration. I can't pay you right now, but I am offering 5% equity in the company once we launch and secure funding. Let's meet at the cafe to discuss.

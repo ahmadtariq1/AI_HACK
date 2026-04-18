@@ -1,4 +1,5 @@
 Email 2: Vague Networking
+Received-Date: 2026-04-18
 
 Subject: Invite: Tech Leaders Mixer
 Body: Join us this Thursday at the local tech park. We are hosting CTOs from five top software houses. There are no formal presentations, just coffee and conversation. We highly recommend bringing a few copies of your resume, as several of these companies are looking to bypass standard technical interviews for immediate hires.

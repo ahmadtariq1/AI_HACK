@@ -1,4 +1,5 @@
 Email 6: The Unconventional Platform
+Received-Date: 2026-04-18
 
 Subject: Build on Web3 - Global Virtual Hackathon
 Body: Join the Solana developer ecosystem this weekend. No prior blockchain experience required. We provide the API and RPC endpoints. Connect your wallet to register and join the main Discord channel to find a team. Bounties total $50k USD.

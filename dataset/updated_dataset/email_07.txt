@@ -1,4 +1,5 @@
 Email 7: Niche Research Grant
+Received-Date: 2026-04-18
 
 Subject: Call for Proposals: NLP for Regional Languages
 Body: The linguistics department is offering a micro-grant of $500 for undergraduate engineering students. We need a script that can successfully tokenize Roman Urdu with high accuracy. Submit a one-page methodology by Monday.

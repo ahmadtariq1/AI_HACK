@@ -1,4 +1,5 @@
 Email 9: Mandatory Coursework Disguised as a Competition
+Received-Date: 2026-04-18
 
 Subject: Final Project: AI Hackathon Logistics
 Body: For your final project in CS405, we will be simulating a hackathon environment. You have 48 hours to build your model. The team with the highest accuracy score on the test set will receive a 5% bonus on their final grade. Attendance in the lab is mandatory for the duration of the "event".

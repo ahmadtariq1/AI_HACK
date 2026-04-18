@@ -1,4 +1,5 @@
 Email 12: Senior Job Listing
+Received-Date: 2026-04-18
 
 Subject: Now Hiring: Principal Data Architect
 Body: We are expanding our data engineering team. We are looking for a Principal Data Architect with 10+ years of experience managing distributed Kafka clusters and enterprise-level Hadoop ecosystems. Competitive salary and stock options. Apply via our portal.
