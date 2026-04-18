@@ -1,0 +1,4 @@
+Email 4: Cross-Disciplinary Competition
+
+Subject: Med-Tech Innovation Challenge
+Body: The Medical College is hosting its annual hardware design challenge. We have several teams of medical students who have great ideas but no ability to code. We are opening up 10 slots for CS students to join as technical co-founders. Top prize is a 500k PKR grant.
