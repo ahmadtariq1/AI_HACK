@@ -62,8 +62,9 @@ export default function ProfilePage({ onNext }) {
     <div className="page">
       <div className="page-hero">
         <div className="page-tag">Step 01</div>
-        <h1 className="page-title">Your <em>Profile</em></h1>
-        <p className="page-sub">Define your academic identity. The scoring engine uses this data to evaluate every opportunity against your exact situation.</p>
+        {/* <h1 className="page-title">Your <em>Profile</em></h1> */}
+        <h1 style={{ fontFamily: 'system-ui, sans-serif', fontWeight: 600, letterSpacing: '-0.02em' }}>Your <em style={{ fontWeight: 400 }}>Profile</em></h1>
+        <p className="page-sub"></p>
       </div>
 
       <div className="form-body">
@@ -105,7 +106,7 @@ export default function ProfilePage({ onNext }) {
           </div>
 
           <div className="form-group full">
-            <label>Skills &amp; Interests — press Enter or comma to add</label>
+            <label>Skills &amp; Interests </label>
             <TagInput
               tags={skills} inputId="skillInput" placeholder="Add skill..."
               onAdd={v => setSkills(s => [...s, v])}
@@ -126,7 +127,7 @@ export default function ProfilePage({ onNext }) {
           </div>
 
           <div className="form-group full">
-            <label>Past Experience Tags — press Enter or comma to add</label>
+            <label>Past Experience Tags </label>
             <TagInput
               tags={experience} inputId="expInput" placeholder="Add experience..."
               onAdd={v => setExperience(s => [...s, v])}

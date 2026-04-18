@@ -167,8 +167,8 @@ export default function ResultsPage({ emails, profile }) {
     <div className="page">
       <div className="page-hero">
         <div className="page-tag">Step 03</div>
-        <h1 className="page-title">Ranked <em>Opportunities</em></h1>
-        <p className="page-sub">Sorted by fit, urgency, and preference. Expand any card for action checklist and score breakdown.</p>
+        <h1 className="page-title">Ranked Opportunities</h1>
+        <p className="page-sub">Sorted by fit, urgency, and preference.</p>
       </div>
 
       <div className="results-layout">

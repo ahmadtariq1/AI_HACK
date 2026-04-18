@@ -6,10 +6,7 @@ export default function Navbar({ step, onGoTo, theme, toggleTheme }) {
   ]
   return (
     <nav className="nav">
-      <div className="nav-brand">
-        <div className="dot" />
-        ALPHA MAIL EXTRACTOR
-      </div>
+  <div />
       <div className="nav-steps">
         {steps.map(s => (
           <div

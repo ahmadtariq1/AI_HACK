@@ -42,8 +42,8 @@ export default function EmailPage({ onBack, onAnalyse }) {
     <div className="page">
       <div className="page-hero">
         <div className="page-tag">Step 02</div>
-        <h1 className="page-title">Paste Your <em>Emails</em></h1>
-        <p className="page-sub">Add 5–15 opportunity emails. Paste the full text — the AI will filter noise, extract data, and structure each one automatically.</p>
+        <h1 className="page-title"><em>Paste Your Emails</em></h1>
+        <p className="page-sub">Add emails to find opportunity</p>
       </div>
 
       <div className="email-toolbar">
