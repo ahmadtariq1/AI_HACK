@@ -158,7 +158,7 @@ async def _run_manual_test() -> None:
     email_files = sorted(glob.glob(os.path.join(dataset_path, "email_*.txt")))
 
     # Configurable number of outputs
-    NUM_EMAILS_TO_TEST = 2
+    NUM_EMAILS_TO_TEST = 1
     to_process_files = email_files[:NUM_EMAILS_TO_TEST]
 
     emails = []
@@ -184,7 +184,7 @@ async def _run_manual_test() -> None:
     print()
 
     profile = StudentProfile(**DEMO_PROFILE)
-    request = PipelineRequest(profile=profile, emails=emails)
+    request = PipelineRequest(student_profile=profile, emails=emails)
 
     print("  Running pipeline …\n")
     response = await run_pipeline(request)

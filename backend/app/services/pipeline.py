@@ -66,7 +66,7 @@ async def _process_single_email(
         spam_record = ExtractedOpportunity(
             is_opportunity=False,
             confidence=classification.confidence,
-            classification_reason=classification.reason,
+            classification_reason=classification.rationale,
             needs_manual_review=False,
             raw_subject=email.subject,
             raw_body_snippet=email.body[:300],
@@ -101,7 +101,7 @@ async def run_pipeline(request: PipelineRequest) -> PipelineResponse:
     # Stage I + II  (concurrent per email)                                #
     # ------------------------------------------------------------------ #
     tasks = [
-        _process_single_email(email, request.profile)
+        _process_single_email(email, request.student_profile)
         for email in request.emails
     ]
     results: list[tuple] = await asyncio.gather(*tasks, return_exceptions=True)
@@ -134,7 +134,7 @@ async def run_pipeline(request: PipelineRequest) -> PipelineResponse:
     # Stage III  (synchronous — pure Python)                              #
     # ------------------------------------------------------------------ #
     scored: list[ScoredOpportunity] = [
-        score_opportunity(opp, request.profile, rank=0)
+        score_opportunity(opp, request.student_profile, rank=0)
         for opp in opportunities
     ]
 
@@ -154,7 +154,7 @@ async def run_pipeline(request: PipelineRequest) -> PipelineResponse:
     urgent_count = sum(
         1 for s in scored
         if s.extracted.deadline
-        and (s.extracted.deadline - date.today()).days <= 14
+        and (s.extracted.deadline.date() - date.today()).days <= 14
         and s.score.is_eligible
     )
 
@@ -165,7 +165,7 @@ async def run_pipeline(request: PipelineRequest) -> PipelineResponse:
     ]
     if deadline_items:
         nearest_days = min(
-            (s.extracted.deadline - date.today()).days
+            (s.extracted.deadline.date() - date.today()).days
             for s in deadline_items
         )
 

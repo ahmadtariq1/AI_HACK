@@ -171,24 +171,39 @@ DEMO_EMAILS: list[dict] = [
 # ---------------------------------------------------------------------------
 
 DEMO_PROFILE: dict = {
-    "degree_program": "BS Computer Science",
-    "semester": 6,
-    "cgpa": 3.6,
-    "skills_interests": [
-        "Python",
-        "Machine Learning",
-        "NLP",
-        "Public Speaking",
-        "Web Development",
-        "Django",
+    "academic": {
+        "degree_program": "BS Computer Science",
+        "university": "FAST NUCES LAHORE",
+        "semester": 6,
+        "cgpa": 3.6
+    },
+    "technical": {
+        "skills_and_interests": [
+            "Python",
+            "Machine Learning",
+            "NLP",
+            "Public Speaking",
+            "Web Development",
+            "Django"
+        ]
+    },
+    "experience": [
+        {
+            "role": "Software Engineering Intern",
+            "context": "Django intern (3 months)"
+        },
+        {
+            "role": "Research Assistant",
+            "context": "ML Research Assistant"
+        },
+        {
+            "role": "Competitive Programmer",
+            "context": "ICPC participant"
+        }
     ],
-    "pref_opp_types": ["Internship", "Scholarship", "Competition", "Research"],
-    "financial_need": "Yes - Medium",
-    "location_pref": "Pakistan",
-    "past_experience": [
-        "Django intern (3 months)",
-        "ML Research Assistant",
-        "Competitive Programming Club",
-        "ICPC participant",
-    ],
+    "logistics": {
+        "preferred_opportunity_types": ["Internship", "Scholarship", "Competition", "Research"],
+        "location_preference": ["Pakistan"],
+        "financial_need": "stipend_required"
+    }
 }

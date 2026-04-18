@@ -44,6 +44,7 @@ Auto-generated per opportunity based on required docs and deadline urgency.
 from __future__ import annotations
 
 import logging
+import re
 from datetime import date
 from typing import List, Optional
 
@@ -78,6 +79,14 @@ _TYPE_SKILL_MAP: dict[str, list[str]] = {
 def _normalise(text: str) -> str:
     return text.lower().strip()
 
+def _extract_min_cgpa(conditions: list[str]) -> Optional[float]:
+    """Naively extract a CGPA requirement from flat strings."""
+    for cond in conditions:
+        if "cgpa" in cond.lower() or "gpa" in cond.lower():
+            match = re.search(r"(\d\.\d+)", cond)
+            if match:
+                return float(match.group(1))
+    return None
 
 # ---------------------------------------------------------------------------
 # Component scorers
@@ -90,19 +99,19 @@ def _score_profile_fit(opp: ExtractedOpportunity, profile: StudentProfile) -> tu
     total = 0.0
 
     # 1. CGPA buffer (25 pts)
-    min_cgpa: Optional[float] = (opp.eligibility.min_cgpa if opp.eligibility else None)
+    min_cgpa = _extract_min_cgpa(opp.eligibility_conditions)
     if min_cgpa is not None:
-        if profile.cgpa >= min_cgpa:
-            buffer = min(profile.cgpa - min_cgpa, 1.5)  # cap at 1.5 above
+        if profile.academic.cgpa >= min_cgpa:
+            buffer = min(profile.academic.cgpa - min_cgpa, 1.5)  # cap at 1.5 above
             cgpa_score = (buffer / 1.5) * 25
             bullets.append(
-                f"✅ Your CGPA {profile.cgpa:.2f} meets the {min_cgpa:.1f} requirement "
-                f"(+{profile.cgpa - min_cgpa:.2f} buffer)"
+                f"✅ Your CGPA {profile.academic.cgpa:.2f} meets the {min_cgpa:.1f} requirement "
+                f"(+{profile.academic.cgpa - min_cgpa:.2f} buffer)"
             )
         else:
             cgpa_score = 0.0
             bullets.append(
-                f"❌ Your CGPA {profile.cgpa:.2f} is below the {min_cgpa:.1f} requirement"
+                f"❌ Your CGPA {profile.academic.cgpa:.2f} is below the {min_cgpa:.1f} requirement"
             )
     else:
         cgpa_score = 15.0  # neutral — no CGPA requirement stated
@@ -112,7 +121,7 @@ def _score_profile_fit(opp: ExtractedOpportunity, profile: StudentProfile) -> tu
     # 2. Skill overlap (30 pts)
     opp_type_key = _normalise(opp.opportunity_type or "other")
     relevant_skills = _TYPE_SKILL_MAP.get(opp_type_key, [])
-    student_skills_lower = [_normalise(s) for s in profile.skills_interests]
+    student_skills_lower = [_normalise(s) for s in profile.technical.skills_and_interests]
 
     if relevant_skills:
         matched = [s for s in relevant_skills if any(s in sk for sk in student_skills_lower)]
@@ -127,7 +136,7 @@ def _score_profile_fit(opp: ExtractedOpportunity, profile: StudentProfile) -> tu
     total += skill_score
 
     # 3. Type preference match (20 pts)
-    pref_types_lower = [_normalise(t) for t in profile.pref_opp_types]
+    pref_types_lower = [_normalise(t) for t in profile.logistics.preferred_opportunity_types]
     opp_type_norm = _normalise(opp.opportunity_type or "")
     if opp_type_norm and opp_type_norm in pref_types_lower:
         type_score = 20.0
@@ -138,13 +147,13 @@ def _score_profile_fit(opp: ExtractedOpportunity, profile: StudentProfile) -> tu
     total += type_score
 
     # 4. Location match (15 pts)
-    loc_pref = _normalise(profile.location_pref)
+    # Give benefit of doubt for Pakistan since it's the primary context
+    loc_prefs = [_normalise(lp) for lp in profile.logistics.location_preference]
     location_score = 0.0
-    if loc_pref in ("international", "remote", "any"):
+    if "international" in loc_prefs or "remote" in loc_prefs or "any" in loc_prefs:
         location_score = 15.0
         bullets.append("✅ Matches your international/remote preference")
-    elif loc_pref == "pakistan":
-        # Most emails in dataset are Pakistan-based; give benefit of doubt
+    elif "pakistan" in loc_prefs or "lahore" in loc_prefs:
         location_score = 12.0
         bullets.append("✅ Likely within Pakistan (matches location preference)")
     else:
@@ -152,16 +161,13 @@ def _score_profile_fit(opp: ExtractedOpportunity, profile: StudentProfile) -> tu
     total += location_score
 
     # 5. Financial need alignment (10 pts)
-    fin_need = _normalise(profile.financial_need)
-    funding = opp.stipend_funding
+    fin_need = _normalise(profile.logistics.financial_need)
     fin_score = 0.0
-    if funding and ("high" in fin_need or "yes" in fin_need):
-        fin_score = 10.0
-        bullets.append(f"✅ Funded opportunity ({funding}) aligns with your financial need")
-    elif not funding and "low" in fin_need:
-        fin_score = 8.0  # no funding needed, student doesn't need it either
+    # No direct funding field in the new ExtractedOpportunity, so we give neutral
+    if "stipend" in fin_need:
+        fin_score = 8.0
     else:
-        fin_score = 4.0  # neutral
+        fin_score = 4.0
     total += fin_score
 
     return min(total, 100.0), bullets
@@ -172,15 +178,16 @@ def _score_urgency(opp: ExtractedOpportunity) -> float:
     if opp.deadline is None:
         return 40.0  # no deadline → medium urgency per guidelines
 
-    days = (opp.deadline - date.today()).days
+    # ExtractedOpportunity deadline is a datetime now.
+    days = (opp.deadline.date() - date.today()).days
 
     if days < 0:
         return 5.0  # past deadline — still show but very low urgency
     if days < 7:
         return 100.0
     if days < 30:
-        # Linear from 70 (at 7 days) → 99 seems wrong; use 70 at 7 → 50 at 30
-        return 70.0 - ((days - 7) / 23) * 30
+        # Linear from 70 (at 7 days) → 50 at 30
+        return 70.0 - ((days - 7) / 23) * 20
     if days < 90:
         return 40.0 - ((days - 30) / 60) * 30
     return 5.0
@@ -206,39 +213,25 @@ def _score_completeness(opp: ExtractedOpportunity, profile: StudentProfile) -> t
         if missing:
             bullets.append(f"📋 Documents to prepare: {', '.join(missing)}")
 
-    # Eligibility criteria
-    if opp.eligibility:
-        if opp.eligibility.min_cgpa is not None:
+    # Eligibility criteria (we do a naive match since it's a flat list now)
+    if opp.eligibility_conditions:
+        prog_lower = _normalise(profile.academic.degree_program)
+        for cond in opp.eligibility_conditions:
             criteria_count += 1
-            if profile.cgpa >= opp.eligibility.min_cgpa:
+            if "cgpa" in cond.lower() or "gpa" in cond.lower():
+                min_cgpa = _extract_min_cgpa([cond])
+                if min_cgpa and profile.academic.cgpa >= min_cgpa:
+                    satisfied_count += 1
+            elif "semester" in cond.lower() or "year" in cond.lower():
+                # naive assumption they meet it
                 satisfied_count += 1
-
-        if opp.eligibility.target_semesters:
-            criteria_count += 1
-            if profile.semester in opp.eligibility.target_semesters:
+                bullets.append("✅ Semester/Year requirement likely met")
+            elif "cs" in cond.lower() or "computer" in cond.lower() or prog_lower in cond.lower():
                 satisfied_count += 1
-                bullets.append(f"✅ Your semester ({profile.semester}) is within eligible range")
+                bullets.append(f"✅ Your program ({profile.academic.degree_program}) matches eligibility")
             else:
-                bullets.append(
-                    f"⚠️ Your semester ({profile.semester}) may not match "
-                    f"eligible semesters {opp.eligibility.target_semesters}"
-                )
-
-        if opp.eligibility.degree_programs:
-            criteria_count += 1
-            prog_lower = _normalise(profile.degree_program)
-            match = any(
-                _normalise(d) in prog_lower or prog_lower in _normalise(d)
-                for d in opp.eligibility.degree_programs
-            )
-            if match:
-                satisfied_count += 1
-                bullets.append(f"✅ Your program ({profile.degree_program}) matches eligibility")
-            else:
-                bullets.append(
-                    f"⚠️ Your program ({profile.degree_program}) may not match "
-                    f"required programs: {opp.eligibility.degree_programs}"
-                )
+                # default assume they might not meet it
+                pass
 
     if criteria_count == 0:
         return 60.0, bullets  # neutral when no criteria known
@@ -258,15 +251,17 @@ def _generate_action_checklist(
 ) -> List[str]:
     """Build an auto-generated action checklist for this opportunity."""
     actions: list[str] = []
-    title = opp.title or "this opportunity"
+    title = opp.title or opp.opportunity_type or "this opportunity"
 
     # Link / portal action
-    if opp.links_contact:
-        for link in opp.links_contact[:2]:
-            if "@" in link:
-                actions.append(f"📧 Email application to {link}")
-            else:
-                actions.append(f"🔗 Open application link: {link}")
+    if opp.application_or_contact:
+        if opp.application_or_contact.emails:
+            actions.append(f"📧 Email application to {opp.application_or_contact.emails[0]}")
+        elif opp.application_or_contact.urls:
+            actions.append(f"🔗 Open application link: {opp.application_or_contact.urls[0]}")
+        
+        if opp.application_or_contact.instructions:
+            actions.append(f"📝 {opp.application_or_contact.instructions}")
     else:
         actions.append(f"🔍 Find the application portal for '{title}'")
 
@@ -287,12 +282,13 @@ def _generate_action_checklist(
 
     # Deadline urgency
     if deadline_days is not None:
+        formatted_date = opp.deadline.date().isoformat()
         if deadline_days <= 3:
-            actions.insert(0, f"🚨 URGENT: Submit by {opp.deadline} — only {deadline_days} day(s) left!")
+            actions.insert(0, f"🚨 URGENT: Submit by {formatted_date} — only {deadline_days} day(s) left!")
         elif deadline_days <= 7:
-            actions.insert(0, f"⏰ Submit before {opp.deadline} ({deadline_days} days remaining)")
+            actions.insert(0, f"⏰ Submit before {formatted_date} ({deadline_days} days remaining)")
         else:
-            actions.append(f"📅 Mark deadline {opp.deadline} in your calendar")
+            actions.append(f"📅 Mark deadline {formatted_date} in your calendar")
     else:
         actions.append("📅 Clarify deadline — not found in email")
 
@@ -311,28 +307,18 @@ def score_opportunity(
 ) -> ScoredOpportunity:
     """
     Stage III — score and annotate a single extracted opportunity.
-
-    Parameters
-    ----------
-    opp     : ExtractedOpportunity from Stage II.
-    profile : StudentProfile from the request.
-    rank    : Placeholder rank (re-assigned by pipeline after full sort).
-
-    Returns
-    -------
-    ScoredOpportunity with score breakdown, bullets, and action checklist.
     """
     # --- Hard eligibility check ---
-    min_cgpa = opp.eligibility.min_cgpa if opp.eligibility else None
+    min_cgpa = _extract_min_cgpa(opp.eligibility_conditions)
     is_eligible = True
-    if min_cgpa is not None and profile.cgpa < min_cgpa:
+    if min_cgpa is not None and profile.academic.cgpa < min_cgpa:
         is_eligible = False
 
     # --- Component scores ---
     if not is_eligible:
         fit_score = 0.0
         fit_bullets = [
-            f"❌ Ineligible: your CGPA {profile.cgpa:.2f} < required {min_cgpa:.1f}"
+            f"❌ Ineligible: your CGPA {profile.academic.cgpa:.2f} < required {min_cgpa:.1f}"
         ]
     else:
         fit_score, fit_bullets = _score_profile_fit(opp, profile)
@@ -362,7 +348,7 @@ def score_opportunity(
     # --- Why text summary ---
     if not is_eligible:
         why_text = (
-            f"Ineligible: your CGPA ({profile.cgpa:.2f}) is below "
+            f"Ineligible: your CGPA ({profile.academic.cgpa:.2f}) is below "
             f"the required {min_cgpa:.1f}. Consider applying if your CGPA improves."
         )
     else:
@@ -376,7 +362,7 @@ def score_opportunity(
     # --- Deadline days for checklist ---
     deadline_days: Optional[int] = None
     if opp.deadline:
-        deadline_days = (opp.deadline - date.today()).days
+        deadline_days = (opp.deadline.date() - date.today()).days
 
     action_checklist = _generate_action_checklist(opp, deadline_days)
 
