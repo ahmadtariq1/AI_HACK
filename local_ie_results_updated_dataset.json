@@ -1,0 +1,142 @@
+[
+  {
+    "file": "dataset/updated_dataset/email_01.txt",
+    "extraction": {
+      "opportunity_type": "internship",
+      "deadline": "2026-04-18T17:00:00",
+      "deadline_text": "by 5 PM today",
+      "eligibility_conditions": [
+        "final-year students"
+      ],
+      "required_documents": [
+        "resume"
+      ],
+      "application_or_contact": {
+        "emails": [
+          "department head"
+        ],
+        "urls": [],
+        "instructions": "Send your resume to the department head by 5 PM today if you want the referral."
+      }
+    },
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T08:17:25.069468Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_02.txt",
+    "extraction": {
+      "opportunity_type": "networking",
+      "deadline": null,
+      "deadline_text": null,
+      "eligibility_conditions": [],
+      "required_documents": [
+        "resume"
+      ],
+      "application_or_contact": {
+        "emails": [],
+        "urls": [],
+        "instructions": null
+      }
+    },
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T08:17:25.069468Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_03.txt",
+    "extraction": {
+      "opportunity_type": "job",
+      "deadline": "2026-04-18T23:59:59",
+      "deadline_text": "Form closes midnight",
+      "eligibility_conditions": [
+        "Only fast-nu emails accepted"
+      ],
+      "required_documents": [],
+      "application_or_contact": {
+        "emails": [],
+        "urls": [
+          "bit.ly/sys-drive-2026"
+        ],
+        "instructions": "Apply via the link provided."
+      }
+    },
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T08:17:25.069468Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_04.txt",
+    "extraction": {
+      "opportunity_type": "competition",
+      "deadline": null,
+      "deadline_text": null,
+      "eligibility_conditions": [
+        "CS students",
+        "teams of medical students with great ideas but no ability to code"
+      ],
+      "required_documents": [],
+      "application_or_contact": {
+        "emails": [],
+        "urls": [],
+        "instructions": null
+      }
+    },
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T08:17:25.069468Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_05.txt",
+    "extraction": {
+      "opportunity_type": "fellowship",
+      "deadline": null,
+      "deadline_text": "primary application window closed yesterday",
+      "eligibility_conditions": [],
+      "required_documents": [],
+      "application_or_contact": {
+        "emails": [],
+        "urls": [],
+        "instructions": null
+      }
+    },
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T08:17:25.069468Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_06.txt",
+    "extraction": {
+      "opportunity_type": "hackathon",
+      "deadline": null,
+      "deadline_text": null,
+      "eligibility_conditions": [
+        "No prior blockchain experience required"
+      ],
+      "required_documents": [],
+      "application_or_contact": {
+        "emails": [],
+        "urls": [],
+        "instructions": "Connect your wallet to register and join the main Discord channel to find a team."
+      }
+    },
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T08:17:25.069468Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_07.txt",
+    "extraction": {
+      "opportunity_type": "research_grant",
+      "deadline": "2026-04-20",
+      "deadline_text": "by Monday",
+      "eligibility_conditions": [
+        "undergraduate engineering students"
+      ],
+      "required_documents": [
+        "one-page methodology"
+      ],
+      "application_or_contact": {
+        "emails": [],
+        "urls": [],
+        "instructions": "Submit a one-page methodology by Monday"
+      }
+    },
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T08:17:25.069468Z"
+  }
+]

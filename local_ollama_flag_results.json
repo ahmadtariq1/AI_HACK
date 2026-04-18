@@ -1,0 +1,107 @@
+[
+  {
+    "file": "dataset/updated_dataset/email_01.txt",
+    "is_opportunity": true,
+    "rationale": "The email mentions two unlisted summer internship slots for final-year CS students, which aligns with the student's profile and preferred opportunity type. There is no indication of a fee or scam, and eligibility appears to be based on academic year rather than hard disqualifiers.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_02.txt",
+    "is_opportunity": true,
+    "rationale": "The event offers direct access to CTOs and allows resume submission bypassing standard interviews, which aligns with a genuine opportunity for a CS student interested in software engineering roles. No hard exclusion criteria are present that contradict the student's profile.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_03.txt",
+    "is_opportunity": true,
+    "rationale": "The email describes an on-campus internship drive open to FAST NUCES Lahore students, which aligns with the student's profile and preferred opportunity types. No hard exclusion criteria are stated that would disqualify the student.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_04.txt",
+    "is_opportunity": true,
+    "rationale": "The email offers a competition where CS students can join as technical co-founders, aligning with the student's interests in agentic workflows and microservices architecture. It provides a clear opportunity with tangible rewards and fits the student's profile.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_05.txt",
+    "is_opportunity": true,
+    "rationale": "The email describes a post-deadline waitlist for a fellowship, which is a legitimate opportunity under Rule 1. There is no evidence of hard constraints that exclude the student.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_06.txt",
+    "is_opportunity": true,
+    "rationale": "The email describes a global virtual hackathon with no prior experience required, offering bounties and direct access to resources, which aligns with the student's interest in agentic workflows and software engineering. It is a legitimate opportunity within the student's preferred types.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_07.txt",
+    "is_opportunity": true,
+    "rationale": "The email offers a research grant specifically for undergraduate engineering students, aligning with the student's interest in NLP and machine learning. The requirement to submit a methodology for tokenizing Roman Urdu fits within their technical skills and experience.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_08.txt",
+    "is_opportunity": false,
+    "rationale": "The email requires a payment fee of $850, which constitutes a pay-to-play scam and violates Rule 2 as it is not a genuine opportunity but a phishing attempt.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_09.txt",
+    "is_opportunity": false,
+    "rationale": "The email is a disguised coursework requirement, not an external opportunity. It does not offer a genuine internship, job, or competitive program outside the academic curriculum.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_10.txt",
+    "is_opportunity": false,
+    "rationale": "The email describes an unpaid ambassador program focused on marketing and event organization, which does not align with the student's interest in software engineering, machine learning, or technical roles. It lacks technical relevance and is categorized as unpaid marketing labor, not a genuine opportunity in the student's profile.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_11.txt",
+    "is_opportunity": false,
+    "rationale": "The email is a phishing attempt that requires verification of personal credentials and financial information, which violates security protocols and does not represent a genuine opportunity for the student.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_12.txt",
+    "is_opportunity": false,
+    "rationale": "The email explicitly requires 10+ years of experience, which exceeds the student's background and is a hard constraint not met by the CS student at FAST NUCES LAHORE.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_13.txt",
+    "is_opportunity": false,
+    "rationale": "The email is a survey with a raffle prize, which falls under non-opportunity categories as it lacks any substantive role, internship, or competitive pathway and is purely promotional.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_14.txt",
+    "is_opportunity": false,
+    "rationale": "The email describes a club election, which is an internal event requiring nominations and signatures, not a genuine opportunity for a CS student. It does not offer any technical or professional role aligned with the student's profile.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  },
+  {
+    "file": "dataset/updated_dataset/email_15.txt",
+    "is_opportunity": false,
+    "rationale": "The email describes a pay-to-play arrangement with equity as compensation, which is not a genuine opportunity for a university student and constitutes a scam. It lacks legitimacy, explicit eligibility, and does not align with the student's profile or preferred opportunity types.",
+    "model": "qwen3-4b-instruct-2507-mlx",
+    "created_at": "2026-04-18T07:56:41.796546Z"
+  }
+]
